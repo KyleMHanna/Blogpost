@@ -1,7 +1,7 @@
 <template>
   <div class="col-md-3 py-3">
     <div class="card" style="">
-      <img :src="posts.imgUrl" class="card-img-top img-style" alt="...">
+      <img :src="posts.imgUrl" class="card-img-top img-style img-fluid" alt="...">
       <div class="card-body">
         <h5 class="card-title">
           {{ posts.title }}
@@ -16,16 +16,6 @@
       </div>
     </div>
   </div>
-
-  <Modal :id="'post-modal-' + posts.id">
-    <template #modal-title>
-      {{ posts.title }}
-    </template>
-    <template #modal-body>
-      {{ posts.imgUrl }}
-      {{ posts.body }}
-    </template>
-  </Modal>
 </template>
 
 <script>
