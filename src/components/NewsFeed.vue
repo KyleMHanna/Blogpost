@@ -16,6 +16,16 @@
       </div>
     </div>
   </div>
+
+  <Modal :id="'post-modal-' + posts.id">
+    <template #modal-title>
+      {{ posts.title }}
+    </template>
+    <template #modal-body>
+      {{ posts.imgUrl }}
+      {{ posts.body }}
+    </template>
+  </Modal>
 </template>
 
 <script>

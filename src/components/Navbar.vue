@@ -22,6 +22,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
+        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#post-form">
+          Create Post
+        </button>
         <li>
           <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
             About
