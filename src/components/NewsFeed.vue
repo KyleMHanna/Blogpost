@@ -12,7 +12,7 @@
         <p class="selectable " @click.prevent="readMore()">
           Read more...
         </p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <i class="mdi mdi-close text-danger f-20 selectable" @click="deletePost()"></i>
       </div>
     </div>
   </div>
@@ -22,6 +22,8 @@
 import { computed } from '@vue/runtime-core'
 
 import { AppState } from '../AppState.js'
+import { newsFeedService } from '../services/NewsFeedService.js'
+import Pop from '../utils/Pop.js'
 export default {
   props: {
     posts: {
@@ -34,6 +36,13 @@ export default {
       account: computed(() => AppState.account),
       readMore() {
         document.getElementById('read-more').classList.toggle('clip-text')
+      },
+      async deletePost() {
+        try {
+          await newsFeedService.deletePost(props.posts.id)
+        } catch (error) {
+          Pop.toast(error, 'error')
+        }
       }
 
     }

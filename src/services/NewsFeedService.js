@@ -14,6 +14,12 @@ class NewsFeedService {
     logger.log(res)
     AppState.posts.unshift(new Post(res.data))
   }
+
+  async deletePost(postId) {
+    const res = await api.delete('api/blogs/' + postId)
+    logger.log('delete res', res)
+    AppState.posts = AppState.posts.filter(p => p.id !== postId)
+  }
 }
 
 export const newsFeedService = new NewsFeedService()
