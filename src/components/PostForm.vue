@@ -20,11 +20,21 @@
              required
       >
     </div>
-
     <div class="form-group">
-      <button type="submit" class="btn btn-success mt-2">
-        Create Post
-      </button>
+      <label for="body">body</label>
+      <input type="text"
+             class="form-control bg-light"
+             name="title"
+             placeholder="Title...."
+             v-model="editable.body"
+             required
+      >
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-success mt-2">
+          Create Post
+        </button>
+      </div>
     </div>
   </form>
 </template>
@@ -34,13 +44,15 @@ import { ref } from '@vue/reactivity'
 import Pop from '../utils/Pop'
 import { Modal } from 'bootstrap'
 import { newsFeedService } from '../services/NewsFeedService.js'
+import { logger } from '../utils/Logger.js'
 export default {
   setup() {
-    const editable = ref()
+    const editable = ref({})
     return {
       editable,
       async createPost() {
         try {
+          debugger
           await newsFeedService.createPost(editable.value)
           editable.value = {}
           Pop.toast('Post added much yes', 'success')
@@ -48,6 +60,7 @@ export default {
           modal.hide()
         } catch (error) {
           Pop.toast(error.message, 'error')
+          logger.log(error)
         }
       }
     }

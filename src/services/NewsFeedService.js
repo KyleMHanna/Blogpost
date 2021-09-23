@@ -1,6 +1,7 @@
 import { AppState } from '../AppState'
 import { api } from './AxiosService'
 import { Post } from '../models/Post.js'
+import { logger } from '../utils/Logger.js'
 
 class NewsFeedService {
   async getPosts() {
@@ -9,7 +10,8 @@ class NewsFeedService {
   }
 
   async createPost(newPost) {
-    const res = api.post('api/blogs', newPost)
+    const res = await api.post('api/blogs', newPost)
+    logger.log(res)
     AppState.posts.unshift(new Post(res.data))
   }
 }
