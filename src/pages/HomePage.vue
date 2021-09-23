@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-3">
-        <NewsFeed />
+        <NewsFeed v-for="p in projects" :key="p.id" />
       </div>
     </div>
   </div>
