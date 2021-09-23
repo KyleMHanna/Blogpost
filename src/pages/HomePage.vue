@@ -1,9 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-3">
-        <NewsFeed v-for="p in posts" :key="p.id" :posts="p" />
-      </div>
+      <NewsFeed v-for="p in posts" :key="p.id" :posts="p" />
     </div>
   </div>
 </template>
