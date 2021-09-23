@@ -2,10 +2,12 @@ import { AppState } from '../AppState'
 import { api } from './AxiosService'
 import { Post } from '../models/Post.js'
 import { logger } from '../utils/Logger.js'
+import { convertToQuery } from '../utils/Query'
 
 class NewsFeedService {
-  async getPosts() {
-    const res = await api.get('api/blogs')
+  async getPosts(query = {}) {
+    AppState.posts = []
+    const res = await api.get('api/blogs' + convertToQuery(query))
     AppState.posts = res.data.map(p => new Post(p))
   }
 

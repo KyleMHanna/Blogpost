@@ -15,6 +15,12 @@
         <p class="selectable " @click.prevent="readMore()">
           Read more...
         </p>
+        <router-link :to="{name: 'Profile', params: {id: posts.creatorId}}" class="selectable">
+          <span>
+            <img :src="posts.creator.picture" class=" rounded-circle" width="44" alt="profile placeholder">
+            {{ posts.creator.name }}
+          </span>
+        </router-link>
       </div>
     </div>
   </div>
