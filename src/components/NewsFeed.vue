@@ -1,12 +1,12 @@
 <template>
   <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
+    <img :src="posts.imgUrl" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">
-        Card title
+        {{ posts.title }}
       </h5>
-      <p class="card-text">
-        Some quick example text to build on the card title and make up the bulk of the card's content.
+      <p class="card-text text-clip">
+        {{ posts.body }}
       </p>
       <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
@@ -14,8 +14,22 @@
 </template>
 
 <script>
+import { computed } from '@vue/runtime-core'
+import { Post } from '../Models/Post.js'
+import { AppState } from '../AppState.js'
 export default {
+  props: {
+    posts: {
+      type: Object,
+      required: true
+    }
+  },
+  setup(props) {
+    return {
+      account: computed(() => AppState.account)
 
+    }
+  }
 }
 </script>
 
