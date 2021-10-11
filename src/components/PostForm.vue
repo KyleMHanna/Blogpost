@@ -52,7 +52,6 @@ export default {
       editable,
       async createPost() {
         try {
-          debugger
           await newsFeedService.createPost(editable.value)
           editable.value = {}
           Pop.toast('Post added much yes', 'success')
